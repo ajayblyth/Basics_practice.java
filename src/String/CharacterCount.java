@@ -6,13 +6,14 @@ import java.util.Map;
 
 public class CharacterCount {
     public static void main(String[] args) {
-        String input = "aabbghcvgdgcvdhcv";
+        String input = "aabbgAhcvgdgcvdhcv";
+        String inp = input.toLowerCase();
 
         // Create a map to store character counts
         Map<Character, Integer> map = new HashMap<>();
 
         // Iterate through the string and count each character
-        for (char ch : input.toCharArray()) {
+        for (char ch : inp.toCharArray()) {
             map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
 
