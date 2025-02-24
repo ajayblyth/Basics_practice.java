@@ -152,7 +152,6 @@ Remove duplicates from a sorted array.
 
 Find the missing number in a given range.
 
-Find the majority element in an array.
-Kadane’s Algorithm to find the maximum subarray sum.
 Merge two sorted arrays without extra space.
+
 Move all zeroes to the end of the array
