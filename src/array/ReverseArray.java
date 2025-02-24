@@ -7,26 +7,20 @@ public class ReverseArray {
     public static void main(String[] args) {
      reverseArray();
      reverseUsingStream();
-     usingArrayMethod();
+
     }
     public static void reverseArray() {
         int[] arr = {1, 2, 3, 4, 5};
-
-        int[] reversed = new int[arr.length];
-
-        for (int i = 0; i < arr.length; i++) {
-            reversed[i] = arr[arr.length- 1 - i];
+        int size = arr.length;
+        for(int i =0; i< arr.length/2; i++) {
+            int temp = arr[i];
+            arr[i] = arr[size -1];
+            arr[size-1] = temp;
+            size--;
         }
-        System.out.println("Reversed Array: " + java.util.Arrays.toString(reversed));
+        System.out.println(Arrays.toString(arr));
+
     }
-
-        public static void usingArrayMethod() {
-            int[] arr = {1, 2, 3, 4, 5};
-            int[] reversed = new int[arr.length];
-            Arrays.setAll(reversed, i -> arr[arr.length - 1 - i]);
-
-            System.out.println(Arrays.toString(reversed));
-        }
     public static void reverseUsingStream() {
         int[] arr = {1, 2, 3, 4, 5};
             int[] reversed = IntStream.range(0, arr.length)

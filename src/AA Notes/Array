@@ -7,6 +7,7 @@ It allows indexed access to elements, making retrieval efficient.
 Fixed Size: Once declared, the size of the array cannot be changed.
 Same Data Type: All elements in an array must be of the same type.
 Indexed Access: Elements are accessed using a zero-based index.
+
 Efficient Retrieval: Accessing elements is fast (O(1) time complexity).
 
 3. Syntax and Creation of an Array
