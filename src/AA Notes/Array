@@ -145,9 +145,13 @@ Consumes contiguous memory, which may not always be available.
 Now that you have a strong understanding, try solving these:
 
 Find the second largest number in an array.
+
 Reverse an array without using extra space.
+
 Remove duplicates from a sorted array.
+
 Find the missing number in a given range.
+
 Find the majority element in an array.
 Kadane’s Algorithm to find the maximum subarray sum.
 Merge two sorted arrays without extra space.
