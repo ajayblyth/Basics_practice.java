@@ -1,0 +1,154 @@
+String
+
+A **String** in Java is an immutable sequence of characters. Java provides three main classes for handling strings:
+
+- **String** (Immutable)
+- **StringBuilder** (Mutable, non-synchronized)
+- **StringBuffer** (Mutable, synchronized)
+
+-----------------------------------------------------------
+## Characteristics of String
+- **Immutable**: Once created, a String cannot be changed.
+
+- **Stored in String Pool**: Java optimizes memory by storing literals in a special memory area called
+ the **String Constant Pool**.
+
+- **Thread-Safe**: Being immutable makes it inherently thread-safe.
+
+---
+
+## String Creation
+
+1. **Using String Literal**
+
+   String str1 = "Hello";  // Stored in String Pool
+
+
+2. **Using new Keyword**
+
+   String str2 = new String("Hello");  // Stored in Heap
+
+
+-----------------------------------------------------------------------
+
+## Important String Methods
+
+| Method | Description | Example |
+|--------|-------------|------------|
+| `length()` | Returns the length of the string | `str.length()` |
+
+| `charAt(index)` | Returns the character at the given index | `str.charAt(0)` |
+
+| `substring(start, end)` | Extracts a portion of the string | `str.substring(1, 4)` |
+
+| `contains(str)` | Checks if a string contains a substring | `str.contains("Hello")` |
+
+| `indexOf(char)` | Finds the index of a character | `str.indexOf('e')` |
+
+| `toUpperCase()` | Converts to uppercase | `str.toUpperCase()` |
+
+| `toLowerCase()` | Converts to lowercase | `str.toLowerCase()` |
+
+| `replace(old, new)` | Replaces occurrences of a substring | `str.replace("Java", "Python")` |
+
+| `split(delimiter)` | Splits a string into an array | `str.split(",")` |
+
+| `trim()` | Removes leading/trailing spaces | `str.trim()` |
+
+| `equals(str2)` | Checks equality | `str.equals("Hello")` |
+
+| `equalsIgnoreCase(str2)` | Checks equality (ignoring case) | `str.equalsIgnoreCase("hello")` |
+
+| `concat(str2)` | Concatenates two strings | `str.concat(" World")` |
+
+
+Note: The method substring(start, end) in Java extracts characters starting from start (inclusive) to end (exclusive).
+
+      System.out.println("Substring (1, 4): " + str.substring(1, 4)); // Output: ell
+      str = "Hello World"
+
+      Index positions: H(0), e(1), l(2), l(3), o(4), (5), W(6), o(7), r(8), l(9), d(10)
+      For str.substring(1, 4):
+
+      Starts at index 1 (e).
+      Includes index 1, 2, and 3 (e, l, l).
+      Stops at index 4 (exclusive), so it does not include o (index 4).
+
+-----------------------------------------
+
+## StringBuilder & StringBuffer
+
+### StringBuilder (Faster, Not Thread-Safe)
+
+StringBuilder sb = new StringBuilder("Hello");
+sb.append(" World");
+System.out.println(sb); // Output: Hello World
+```
+
+### StringBuffer (Slower, Thread-Safe)
+
+StringBuffer sbf = new StringBuffer("Hello");
+sbf.append(" World");
+System.out.println(sbf); // Output: Hello World
+```
+
+### Comparison Table
+
+| Feature               | String     | StringBuilder | StringBuffer |
+|---------|--------|---------------|---------------|
+| **Mutability**       | Immutable    | Mutable         | Mutable |
+| **Performance**      | Slow         | Fast            | Slightly Slower |
+| **Thread-Safety**    | Yes           | No             | Yes |
+
+### StringBuilder & StringBuffer Methods
+
+| Method                       | Description |
+|--------|-------------|
+| `append(str)`                 | Adds string at the end |
+| `insert(index, str)`          | Inserts at a specific index |
+| `replace(start, end, str)`    | Replaces part of a string |
+| `delete(start, end)`          | Deletes characters |
+| `reverse()`                   | Reverses the string |
+
+
+---
+
+## String Cases Handling
+
+### Convert to Uppercase & Lowercase
+```java
+String str = "Hello World";
+System.out.println(str.toUpperCase()); // HELLO WORLD
+System.out.println(str.toLowerCase()); // hello world
+```
+
+### Convert to Title Case
+```java
+String str = "hello world";
+String[] words = str.split(" ");
+StringBuilder titleCase = new StringBuilder();
+for (String word : words) {
+    titleCase.append(Character.toUpperCase(word.charAt(0)))
+            .append(word.substring(1)).append(" ");
+}
+System.out.println(titleCase.toString().trim()); // Output: Hello World
+```
+
+---
+
+## Important Points to Remember
+
+✅ **String is immutable**; modifying it creates a new object.
+
+✅ **Use StringBuilder** when frequent modifications are needed.
+
+✅ `==` checks **reference equality**, `.equals()` checks **value equality**.
+
+✅ `split()` returns an **array of substrings**.
+
+✅ **String concatenation (`+`) is inefficient** in loops; use **StringBuilder**.
+
+✅ `trim()` removes extra spaces from the beginning and end.
+
+
+
