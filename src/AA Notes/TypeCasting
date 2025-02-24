@@ -1,0 +1,193 @@
+# **Java Type Conversion & Casting**
+
+## **1️⃣ Primitive to Wrapper Class Conversion**
+
+### **Using `valueOf()` (Preferred for Object Contexts)**
+
+- Converts a primitive value into its respective Wrapper class object.
+
+- Efficient because it uses caching for smaller values (e.g., `Integer` from `-128` to `127`).
+
+#### **Example:**
+`
+int num = 10;
+Integer objNum = Integer.valueOf(num); // Converts int to Integer
+System.out.println(objNum); // Output: 10
+```
+
+### **Using Autoboxing (Automatic Conversion)**
+
+- Java automatically converts a primitive to its Wrapper class.
+
+#### **Example:**
+int num = 20;
+Integer objNum = num; // Autoboxing
+System.out.println(objNum); // Output: 20
+```
+
+---
+
+## **2️⃣ Wrapper Class to Primitive Conversion**
+
+### **Using `xxxValue()` Methods (Preferred for Performance)**
+
+- Converts Wrapper class objects back to primitives.
+
+#### **Example:**
+```java
+Integer objNum = Integer.valueOf(30);
+int num = objNum.intValue(); // Converts Integer to int
+System.out.println(num); // Output: 30
+```
+
+### **Using Unboxing (Automatic Conversion)**
+- Java automatically converts a Wrapper class object into a primitive.
+
+#### **Example:**
+```java
+Integer objNum = 40;
+int num = objNum; // Unboxing
+System.out.println(num); // Output: 40
+```
+
+---
+
+## **3️⃣ `parseXxx()` vs `valueOf()` Comparison**
+| Feature | `parseXxx()` | `valueOf()` |
+|---------|-------------|-------------|
+| Returns | Primitive (`int`, `double`) | Wrapper Object (`Integer`, `Double`) |
+| Usage | Best for performance & calculations | Best for object-based scenarios |
+| Example | `int x = Integer.parseInt("123");` | `Integer x = Integer.valueOf("123");` |
+| Performance | Faster (no object creation) | Slightly slower (creates Wrapper object) |
+
+### **Example:**
+
+// Using parseInt()
+int num1 = Integer.parseInt("50"); // Converts String to int
+System.out.println(num1); // Output: 50
+
+// Using valueOf()
+Integer num2 = Integer.valueOf("50"); // Converts String to Integer
+System.out.println(num2); // Output: 50
+```
+
+---
+
+## **4️⃣ Implicit & Explicit Casting**
+### **Implicit Casting (Widening Conversion)**
+- **Automatic conversion from smaller to larger type.**
+- **No data loss.**
+
+#### **Example:**
+```java
+int num = 100;
+double d = num; // Implicit casting (int → double)
+System.out.println(d); // Output: 100.0
+```
+
+### **Explicit Casting (Narrowing Conversion)**
+- **Requires manual conversion from larger to smaller type.**
+- **May cause data loss.**
+
+#### **Example:**
+```java
+double d = 99.99;
+int num = (int) d; // Explicit casting (double → int)
+System.out.println(num); // Output: 99 (Decimal part lost)
+```
+
+---
+
+## **5️⃣ Comparison of All Methods**
+| Conversion | Preferred Method | Why? |
+|------------|----------------|------|
+| **Primitive → Wrapper** | `valueOf(x)` | Efficient & avoids unnecessary object creation |
+| **Wrapper → Primitive** | `.xxxValue()` | Best for performance |
+| **String → Primitive** | `parseXxx()` | Fastest, avoids unnecessary objects |
+| **String → Wrapper** | `valueOf()` | Best for object-based operations |
+| **Implicit Casting** | **Automatic (small → large)** | No data loss |
+| **Explicit Casting** | `(type) value` | Used for narrowing conversions |
+
+---
+
+## **6️⃣ Special Cases in Type Conversion**
+### **Converting `char` to `int` (ASCII Values)**
+```java
+char c = 'A';
+int ascii = (int) c;
+System.out.println(ascii); // Output: 65
+```
+
+### **Converting `int` to `char`**
+```java
+int num = 65;
+char c = (char) num;
+System.out.println(c); // Output: 'A'
+```
+
+### **Converting `boolean` to String & Vice Versa**
+```java
+boolean flag = true;
+String strBool = String.valueOf(flag);
+boolean parsedBool = Boolean.parseBoolean("true");
+System.out.println(parsedBool); // Output: true
+```
+
+---
+
+## **7️⃣ When to Use Each Conversion Method?**
+| Scenario | Method |
+|------------|--------------------------------|
+| Convert primitive to String | `String.valueOf(x)`, `Integer.toString(x)` |
+| Convert String to primitive | `parseXxx()` (e.g., `Integer.parseInt(str)`) |
+| Convert String to Wrapper | `valueOf()` (e.g., `Integer.valueOf(str)`) |
+| Convert Wrapper to primitive | `.xxxValue()` (e.g., `obj.intValue()`) |
+| Implicit casting | Automatic for widening (small → large) |
+| Explicit casting | Manual for narrowing (large → small) |
+
+---
+
+## **8️⃣ Complete Example of All Methods**
+```java
+public class TypeConversionDemo {
+    public static void main(String[] args) {
+        // Primitive to Wrapper
+        int num1 = 10;
+        Integer objNum1 = Integer.valueOf(num1);
+        System.out.println("Integer Object: " + objNum1);
+
+        // Wrapper to Primitive
+        Integer objNum2 = 20;
+        int num2 = objNum2.intValue();
+        System.out.println("Primitive int: " + num2);
+
+        // String to Primitive
+        int num3 = Integer.parseInt("30");
+        System.out.println("Parsed int: " + num3);
+
+        // String to Wrapper
+        Integer objNum3 = Integer.valueOf("40");
+        System.out.println("Integer Object from String: " + objNum3);
+
+        // Implicit Casting (Widening)
+        int smallNum = 50;
+        double largeNum = smallNum;
+        System.out.println("Implicit Casting: " + largeNum);
+
+        // Explicit Casting (Narrowing)
+        double bigNum = 99.99;
+        int smallConvertedNum = (int) bigNum;
+        System.out.println("Explicit Casting: " + smallConvertedNum);
+
+        // Special Cases
+        char c = 'A';
+        int ascii = (int) c;
+        System.out.println("ASCII Value: " + ascii);
+    }
+}
+```
+
+---
+
+This covers all **type conversions, casting, and best practices** in Java. 🚀 Let me know if you need further explanations!
+
