@@ -1,0 +1,187 @@
+Top 20 Most Asked String Questions in Java (With Answers)
+
+1. What is the difference between String, StringBuilder, and StringBuffer?
+
+Feature	      String	StringBuilder	StringBuffer
+Mutability	  Immutable	     Mutable	Mutable
+Performance	    Slow	     Fast	Slightly Slower
+Thread-Safety	 Yes	       No	     Yes
+
+String str = "Hello";  // Immutable
+
+StringBuilder sb = new StringBuilder("Hello"); // Mutable
+
+StringBuffer sbf = new StringBuffer("Hello"); // Mutable, thread-safe
+
+2. Why are Strings immutable in Java?
+Security: Prevents modification of sensitive data such as passwords, URLs, etc.
+
+Caching: Reusable objects in the string pool optimize memory.
+
+Synchronization: Thread-safe by default.
+
+What is caching?
+Caching stores frequently used objects in memory to avoid unnecessary computation and memory allocation.
+
+String str = "Hello";
+str.concat(" World");
+System.out.println(str); // Output: Hello (unchanged)
+
+3. How does the String Constant Pool work?
+Strings created using literals are stored in the string pool.
+If a duplicate String is created, it reuses the existing object.
+
+String s1 = "Java";
+String s2 = "Java";
+System.out.println(s1 == s2); // Output: true (same reference)
+
+
+4. What is the difference between == and .equals() in Strings?
+== compares references.
+.equals() compares actual values.
+
+String s1 = new String("Java");
+String s2 = "Java";
+System.out.println(s1 == s2);       // Output: false (different objects)
+System.out.println(s1.equals(s2)); // Output: true (same content)
+
+
+5. What is the difference between substring(), split(), and replace() methods?
+
+String str = "Hello World";
+System.out.println(str.substring(0, 5)); // Output: Hello
+System.out.println(Arrays.toString(str.split(" "))); // Output: [Hello, World]
+System.out.println(str.replace("World", "Java")); // Output: Hello Java
+
+6. How does StringBuilder improve performance over String?
+StringBuilder is mutable, so changes don’t create new objects.
+
+StringBuilder sb = new StringBuilder("Java");
+sb.append(" Rocks!");
+System.out.println(sb); // Output: Java Rocks!
+
+7. What are the different ways to create a String in Java?
+
+String s1 = "Hello";  // Using String literal
+String s2 = new String("Hello");  // Using new keyword
+char[] arr = {'H','e','l','l','o'};
+String s3 = new String(arr);  // Using character array
+
+8. How to reverse a String in Java?
+Using StringBuilder:
+
+StringBuilder sb = new StringBuilder("Hello");
+System.out.println(sb.reverse()); // Output: olleH
+Using a temporary variable:
+
+String str = "Hello";
+char[] chars = str.toCharArray();
+int left = 0, right = chars.length - 1;
+while (left < right) {
+    char temp = chars[left];
+    chars[left] = chars[right];
+    chars[right] = temp;
+    left++;
+    right--;
+}
+System.out.println(new String(chars)); // Output: olleH
+
+9. How to check if a String is a palindrome?
+
+String str = "madam";
+String rev = new StringBuilder(str).reverse().toString();
+System.out.println(str.equals(rev)); // Output: true
+
+10. How to count vowels and consonants in a String?
+
+String str = "hello world";
+int vowels = 0, consonants = 0;
+for (char ch : str.toLowerCase().toCharArray()) {
+    if ("aeiou".indexOf(ch) != -1) vowels++;
+    else if (Character.isLetter(ch)) consonants++;
+}
+System.out.println("Vowels: " + vowels + ", Consonants: " + consonants);
+
+
+11. How to check if a string contains only digits?
+
+String str = "12345";
+boolean isNumeric = str.matches("\\d+");
+System.out.println(isNumeric); // Output: true
+
+12. How to split a String using multiple delimiters?
+
+String str = "apple,banana|cherry";
+String[] arr = str.split(",|\\|");
+System.out.println(Arrays.toString(arr)); // Output: [apple, banana, cherry]
+
+13. How to remove white spaces from a String?
+
+String str = "  Hello World  ";
+System.out.println(str.trim()); // Output: Hello World
+
+To remove spaces from the middle:
+String str = "hel lo wo r l d";
+System.out.println(str.replace(" ", "")); // Output: helloworld
+
+14. How to replace a character in a String?
+
+String str = "hello";
+System.out.println(str.replace('l', 'p')); // Output: heppo
+
+15. How to convert a String to a character array?
+
+String str = "Java";
+char[] arr = str.toCharArray();
+System.out.println(Arrays.toString(arr)); // Output: [J, a, v, a]
+
+16. How to find the first non-repeating character in a String?
+
+String str = "swiss";
+for (char ch : str.toCharArray()) {
+    if (str.indexOf(ch) == str.lastIndexOf(ch)) {
+        System.out.println(ch);
+        break;
+    }
+}
+
+17. How to count occurrences of a character in a String using HashMap?
+
+String str = "Java Programming";
+Map<Character, Integer> map = new HashMap<>();
+for (char c : str.toCharArray()) {
+    map.put(c, map.getOrDefault(c, 0) + 1);
+}
+System.out.println(map);
+
+18. Can we convert a numeric into a String using parsing?
+
+Yes, a numeric value can be converted into a String:
+int number = 123;
+String strNum = String.valueOf(number);
+System.out.println(strNum); // Output: "123"
+
+
+18(a) To convert a String to a numeric type:
+
+int num = Integer.parseInt("123");
+double val = Double.parseDouble("45.67");
+float f = Float.parseFloat("3.14");
+
+19. How to check if two Strings are anagrams?
+
+String s1 = "listen", s2 = "silent";
+char[] arr1 = s1.toCharArray();
+char[] arr2 = s2.toCharArray();
+Arrays.sort(arr1);
+Arrays.sort(arr2);
+System.out.println(Arrays.equals(arr1, arr2)); // Output: true
+
+20. Difference between join(), concat(), and append()
+String s1 = "Hello";
+String s2 = "World";
+System.out.println(String.join(" ", s1, s2)); // Hello World
+System.out.println(s1.concat(s2)); // HelloWorld
+StringBuilder sb = new StringBuilder(s1);
+sb.append(s2);
+System.out.println(sb); // HelloWorld

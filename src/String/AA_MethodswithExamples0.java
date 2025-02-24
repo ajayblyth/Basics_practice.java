@@ -13,6 +13,7 @@ public class AA_MethodswithExamples0 {
 
             // substring(start, end)
             System.out.println("Substring (1, 4): " + str.substring(1, 4)); // Output: ell
+//         Note : remember inclusive/ exclusive approach here on substring, first inluded , last excluded, index starts from 0
 
             // contains(str)
             System.out.println("Contains 'Hello': " + str.contains("Hello")); // Output: true
