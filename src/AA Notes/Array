@@ -141,6 +141,32 @@ Insertion & Deletion are costly (O(n)) since elements must be shifted.
 Consumes contiguous memory, which may not always be available.
 --------------------------------------------------------------
 
+
+Yes, .equals() works differently for String and Arrays. Here’s why:
+
+1️⃣ .equals() with Strings (Content Comparison)
+The String class overrides .equals() to compare the actual content of the Strings.
+
+✅ Example:
+java
+Copy
+Edit
+String s1 = "Hello";
+String s2 = new String("Hello");
+
+System.out.println(s1.equals(s2)); // Output: true (Same content)
+System.out.println(s1 == s2);      // Output: false (Different objects in memory)
+💡 Explanation:
+
+.equals() compares the characters inside the String, not the memory reference.
+== compares memory references and returns false since s1 and s2 are different objects.
+2️⃣ .equals() with Arrays (Reference Comparison)
+The Arrays class does not override .equals() for array content comparison.
+
+So USE Arrays.equals in arrays to compare inside content like .equals in string
+
+---------------------------------------------------
+
 6. Common Array Interview Questions
 Now that you have a strong understanding, try solving these:
 
@@ -155,3 +181,4 @@ Find the missing number in a given range.
 Merge two sorted arrays without extra space.
 
 Move all zeroes to the end of the array
+

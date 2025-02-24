@@ -1,41 +1,45 @@
 package String;
 
-
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class CharacterCount {
-    public static void main(String[] args) {
-        String input = "aabbgAhcvgdgcvdhcv";
-        String inp = input.toLowerCase();
+    public static void countCharacters(String str) {
 
-        // Create a map to store character counts
-        Map<Character, Integer> map = new HashMap<>();
+//        maintain insertion order
+        LinkedHashMap<Character, Integer> frequencyMap = new LinkedHashMap<>();
 
-        // Iterate through the string and count each character
-        for (char ch : inp.toCharArray()) {
-            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        str = str.toLowerCase();
+
+        for (char ch : str.toCharArray()) {
+            if (Character.isLetter(ch)) { // Ignore non-alphabetic characters
+                frequencyMap.put(ch, frequencyMap.getOrDefault(ch, 0)+1); // check last of code
+            }
         }
 
-        // Print the character counts
-        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+        // Print  character counts in readable format
+        for (Map.Entry<Character, Integer> entry : frequencyMap.entrySet()) { // check last of code
+
+            System.out.println(entry.getKey() + ": " + entry.getValue()); // check last
         }
     }
 
-    public static class CharCountMap {
-        public static void main(String[] args) {
-            String str= " bhsbdububrfbsbuktriqwtyrfhixbcnx";
-            HashMap<Character, Integer> map = new HashMap<>();
-            for( char ch : str.toCharArray()){
-
-                map.put(ch, map.getOrDefault(ch , 0)+ 1);
-            }
-            for(Map.Entry<Character, Integer>  entry : map.entrySet()){
-                System.out.println(entry.getKey() + " " + entry.getValue());
-
-            }
-
-        }
+    public static void main(String[] args) {
+        countCharacters("Hello, World! 123 $$$");
     }
 }
+//Notes:
+//                   getOrDefault(ch, 0):
+//                If ch exists in frequencyMap, it returns its current count.
+//                If ch does not exist, it returns 0 as the default value.
+//                If we use get(ch) directly when ch is missing, it returns null,
+//                and null + 1 causes a NullPointerException.
+
+
+//What is entrySet()?
+//entrySet() is a method of the Map interface.
+//It returns a Set<Map.Entry<K,V>>, meaning it provides a Set of key-value pairs from the Map.
+
+
+//        entry.getKey() → Retrieves the character (key).
+//        entry.getValue() → Retrieves the frequency (value).

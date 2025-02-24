@@ -1,6 +1,6 @@
 package String;
 
-public class Reverse_palindrome_anagram {
+public class Reverse_palindrome {
     public static void main(String[] args) {
         palindrome("liril");
     }
