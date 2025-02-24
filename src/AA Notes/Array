@@ -1,4 +1,14 @@
+Random Important Stuff
+1.Streams Operate on Objects, Not Primitives
+
+  set.stream() creates a Stream<Integer>, which means each element in the stream is an Integer object.
+  If we try to convert the Stream<Integer> directly to an int[], we run into a type mismatch.
+  .mapToInt(Integer::intValue) is needed to convert Stream<Integer> to IntStream, which works with primitive int.
+
+
+-----------------------------------------------------------------------------------
 1. What is an Array?
+
 An array is a data structure that stores multiple values of the same data type in a contiguous memory location.
 It allows indexed access to elements, making retrieval efficient.
 
